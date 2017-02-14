@@ -6,9 +6,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
-  <body>
-    <%= yield %>
+  <body class= "main-layout">
+
+      <!--Header-->
+      <%= render 'header' %>
+      <!--Body-->
+
+      <div class='container' id='main'>
+        <%= yield %>
+      </div>
+
   </body>
 </html>
