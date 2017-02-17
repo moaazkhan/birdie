@@ -1,0 +1,11 @@
+<h1>HELLO <%= current_user.username.titleize %><h1>
+
+  <div class="well">
+    <h6 style="color:black;"><%= current_user.username %></h6><br/>
+    <% @tweets.each do |tweet| %>
+      <li><%= tweet.content %></li>
+    <% end  %>
+    <ul>
+  </div>
+  <br/>
+  <br/>

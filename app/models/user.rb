@@ -8,7 +8,8 @@ class User
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
-
+  field :username,           type: String, default: ""
+  field :name,               type: String, default: ""
   ## Recoverable
   field :reset_password_token,   type: String
   field :reset_password_sent_at, type: Time
@@ -23,6 +24,9 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
+  def to_param
+    self.username
+  end
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
