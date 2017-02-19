@@ -8,19 +8,34 @@ before_action :authenticate_user!, except: [:index]
 
   #displays all tweets on show page route "localhost:3000/'username'"
   def show
-    @tweets = Tweet.all.to_a
+    @user = User.find_by!(username: params[:username])
+    @tweets = @user.tweets.all.to_a
   end
 
   #Allows user to create new tweet
   def new
+    @user = current_user
+    @tweet = @user.tweets.new
   end
 
   #Allows user to save new tweet
   def create
+    @user = current_user
+    # .create is used to create article using its parameter which are defined as article_params (see below)
+    @tweet = @user.tweets.new(tweets_params)
+    if @tweet.save
+      # Redirecting to the main page when article is created so user can see it.
+      flash[:success] = "Successfully created new Tweet"
+      redirect_to action: :show
+    else
+      flash[:error] = @article.errors.full_messages.join(',')
+      render action: :new
+    end
   end
 
-  def after_sign_in_path_for(resource)
-  username_path(current_user) #your path
+  def tweets_params
+    # the parameters for new article creation #strong params
+    params.require(:tweet).permit(:content)
   end
 
 

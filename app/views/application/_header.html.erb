@@ -12,9 +12,11 @@
 
     <div class='collapse navbar-collapse' id='burger-button'>
       <ul class='nav navbar-nav'>
-        <!-- <li class='active'><%= link_to 'Home', '/' %></li> -->
-        <li><%= link_to 'Some Link', '#' %></li>
-        <!-- <li><%= link_to 'Some Link', '#' %></li> -->
+        <% if current_user %>
+        <li><%= link_to 'Tweets', username_path(current_user)%></li>
+        <% else %>
+        <li><%= link_to 'Tweets', '#' %></li>
+        <% end %>
       </ul>
 
       <ul class='nav navbar-nav navbar-right' id='sign-nav'>
