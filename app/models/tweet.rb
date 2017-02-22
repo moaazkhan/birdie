@@ -7,5 +7,5 @@ class Tweet
   field :content, type: String
 
   validates :content, presence: true
-  validates_length_of :content, :maximum=>30
+  validates_length_of :content, :maximum=>140
 end

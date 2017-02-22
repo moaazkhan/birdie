@@ -15,3 +15,27 @@
 //= require bootstrap.min
 //  require turbolinks
 //= require_tree .
+
+// Start-- JavaScript function to count down the characters in textarea of tweet and also disallows it write beyond 140
+$(document).ready(function(){
+   $('#ta').on('keydown paste',countDown);
+});
+
+function count_down() {
+  element = document.getElementById('ta');
+  element2 = document.getElementById('count1')
+  element2.innerHTML = 140 - element.value.length;
+  var btn = document.getElementById("submit-btn");
+
+  if (element2.innerHTML < 0) {
+      element2.style.color = 'red';
+      btn.disabled = true
+      $( "#submit-btn" ).removeClass( "btn-primary" );
+    }
+    else {
+      $( "#submit-btn" ).addClass( "btn-primary" );
+      element.style.color = 'grey';
+      btn.disabled = false;
+    }
+}
+// End--

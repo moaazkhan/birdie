@@ -9,7 +9,8 @@ before_action :authenticate_user!, except: [:index]
   #displays all tweets on show page route "localhost:3000/'username'"
   def show
     @user = User.find_by!(username: params[:username])
-    @tweets = @user.tweets.all.to_a
+    #This saves user tweets in desc order.
+    @tweets = @user.tweets.order(created_at: :desc)
   end
 
   #Allows user to create new tweet
@@ -28,7 +29,7 @@ before_action :authenticate_user!, except: [:index]
       flash[:success] = "Successfully created new Tweet"
       redirect_to action: :show
     else
-      flash[:error] = @article.errors.full_messages.join(',')
+      flash[:error] = @tweet.errors.full_messages.join(',')
       render action: :new
     end
   end
