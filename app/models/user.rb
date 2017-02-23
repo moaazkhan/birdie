@@ -18,6 +18,7 @@ class User
   field :reset_password_token,   type: String
   field :reset_password_sent_at, type: Time
 
+  before_validation :generate_username
   validates :username,       uniqueness: true
   ## Rememberable
   field :remember_created_at, type: Time
@@ -31,6 +32,11 @@ class User
 
   def to_param
     self.username
+  end
+
+
+  def generate_username
+    self.username = self.username.downcase.gsub(/[^\w]/,'-').gsub(/[^\[a-z0-9]]/,'-').gsub(/\-+/,'-').gsub(/\-$/,'').gsub(/^\-/,'')
   end
   ## Confirmable
   # field :confirmation_token,   type: String
