@@ -10,9 +10,6 @@
       <%= link_to 'Birdie', '/', class: 'navbar-brand' %>
     </div>
 
-
-
-
     <div class='collapse navbar-collapse' id='burger-button'>
       <ul class='nav navbar-nav'>
         <% if current_user %>
@@ -24,9 +21,9 @@
 
       <ul class='nav navbar-nav btn-primary'>
         <% if user_signed_in? %>
-        <li><%= link_to 'New', tweets_new_path %><li>
+        <li><%= link_to 'New', tweets_new_path(current_user.username) %><li>
         <% else %>
-        <li><%= link_to "New", new_user_session_path%><li>
+        <li><%= link_to 'New', new_user_session_path%><li>
         <% end %>
       </ul>
 
@@ -39,7 +36,6 @@
             <li><%= link_to "Sign up", new_user_registration_path %></li>
           <% end %>
       </ul>
-
 
       </div>
     </div>
