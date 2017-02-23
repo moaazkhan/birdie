@@ -1,13 +1,14 @@
-<h1>Tweets for <%= @user.name.titleize %><h1>
 
-  <% @tweets.each do |tweet| %>
-  <div class="well">
-    <h6 style="color:black;"><strong><%= @user.username %><strong></h6>
-      <p style="color:black; font-size:24px"><%= tweet.content %></p>
-      <p style="color:blue; font-size:10px">(<%= time_ago_in_words(tweet.created_at) %> ago)</p>
-  </div>
-  <% end  %>
+<h1 class="title_tweets">Tweets for <%= @user.name.titleize %><h1>
 
-  <% if current_user == @user %>
-  <%= link_to 'New', tweets_new_path, class:"btn btn-primary" %>
-  <% end %>
+
+  <a href="#"><img id="well2" src="/assets/myimage.jpg" alt=""></a>
+
+
+<% @tweets.each do |tweet| %>
+<div class="well">
+  <h6 style="color:black;"><strong><%= @user.username %><strong></h6>
+    <p style="color:black; font-size:24px; overflow:hidden;"><%= tweet.content %></p>
+    <p style="color:blue; font-size:10px;">(<%= time_ago_in_words(tweet.created_at) %> ago)</p>
+</div>
+<% end  %>

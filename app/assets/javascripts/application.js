@@ -17,11 +17,14 @@
 //= require_tree .
 
 // Start-- JavaScript function to count down the characters in textarea of tweet and also disallows it write beyond 140
+
+
+
 $(document).ready(function(){
-   $('#ta').on('keydown paste',countDown);
+   $('#ta').on('input paste',countDown);
 });
 
-function count_down() {
+function countDown() {
   element = document.getElementById('ta');
   element2 = document.getElementById('count1')
   element2.innerHTML = 140 - element.value.length;
@@ -34,7 +37,7 @@ function count_down() {
     }
     else {
       $( "#submit-btn" ).addClass( "btn-primary" );
-      element.style.color = 'grey';
+      element2.style.color = 'grey';
       btn.disabled = false;
     }
 }
