@@ -1,6 +1,12 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  # to include mongoid paperclip gem
+  include Mongoid::Paperclip
+  # initiating field for picture
+  has_mongoid_attached_file :picture
+  # validations picture
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
 
   has_many :tweets
   # Include default devise modules. Others available are:

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/:username/new", to: "tweets#new", as: "tweets_new"
   post "/:username/new", to: "tweets#create"
 
-
+  get "/user/picture", to: "users#edit_picture", as: "edit_picture"
+  patch "/user/picture", to: "users#update_picture", as: "update_picture"
 
 end

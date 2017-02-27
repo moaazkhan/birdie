@@ -19,7 +19,7 @@
         <% end %>
       </ul>
 
-      <ul class='nav navbar-nav btn-primary'>
+      <ul class='nav navbar-nav'>
         <% if user_signed_in? %>
         <li><%= link_to 'New', tweets_new_path(current_user.username) %><li>
         <% else %>
