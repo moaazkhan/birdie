@@ -4,7 +4,7 @@ class User
   # to include mongoid paperclip gem
   include Mongoid::Paperclip
   # initiating field for picture
-  has_mongoid_attached_file :picture
+  has_mongoid_attached_file :picture, styles: {thumb: '100x100#', medium: '250x250#'}
   # validations picture
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
 

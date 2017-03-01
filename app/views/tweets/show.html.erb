@@ -2,7 +2,7 @@
 <h1 class="title_tweets">Tweets for <%= @user.name.titleize %><h1>
 
 <%= link_to edit_picture_path do %>
-  <%= image_tag current_user.picture.url,id: 'well2' %>
+  <%= image_tag current_user.picture.url(:medium), id: 'well2' %>
 <% end %>
 
 <% @tweets.each do |tweet| %>
